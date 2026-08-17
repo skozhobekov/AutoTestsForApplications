@@ -15,7 +15,7 @@ public class Tests
         {
             BaseAddress = new Uri("https://reqres.in/api/")
         };
-        client.DefaultRequestHeaders.Add("x-api-key", "free_user_3HpELMQtbGQTO17ItccFNl2nZss");
+        client.DefaultRequestHeaders.Add("x-api-key", "free_user_3HpM6WaSj9uZDo5SClQhdnaliKP");
     }
 
     [Test]
@@ -34,22 +34,51 @@ public class Tests
         string jsonGet = await response.Content.ReadAsStringAsync();
         UserResponceDTO userResponce = JsonSerializer.Deserialize<UserResponceDTO>(jsonGet);
         UserDataDTO user = userResponce.Data;
-        if (user.Id == 2)
-        {
+        Assert.That(user.Id, Is.EqualTo(2));
         
-        }
-        else
+    }
+
+    [Test]
+    public async Task Test3()
+    {
+        CreateUserRequestDto createUserRequestDto = new CreateUserRequestDto
         {
-            throw new Exception();
-        }
+            Name = "Sanzhar",
+            Job = "Slotegrator"
+        };
+        using HttpResponseMessage response =
+            await client.PostAsJsonAsync("users", createUserRequestDto);
+        response.EnsureSuccessStatusCode();
+
+        string jsonGet = await response.Content.ReadAsStringAsync();
+        CreateUserResponseDto createUserResponseDto = JsonSerializer.Deserialize<CreateUserResponseDto>(jsonGet);
         
-    }   
+        Assert.That(createUserResponseDto.Name, Is.EqualTo("Sanzhar"));
+        Assert.That(createUserResponseDto.Job, Is.EqualTo("Slotegrator"));
+        Assert.That(createUserResponseDto.Id, Is.Not.Null.And.Not.Empty);
+        Assert.That(createUserResponseDto.CreatedAt, Is.Not.EqualTo(default(DateTime)));
+    }
+
+
+    [Test]
+    public async Task Test4()
+    {
+        CreateUserRequestDto createUserRequestDto = new CreateUserRequestDto { Name = "Sanzhar", Job = "Google"};
+        using HttpResponseMessage response =
+            await client.PutAsJsonAsync("users/2", createUserRequestDto);
+        response.EnsureSuccessStatusCode();
+    }
+    
     
     [OneTimeTearDown]
     public void TearDown()
     {
         client.Dispose();
     }
+    [Test]
+    public async Task Test5()
+    {
+        using HttpResponseMessage response = await client.DeleteAsync("users/2");
+        response.EnsureSuccessStatusCode();
+    }
 }
-
-//free_user_3HpELMQtbGQTO17ItccFNl2nZss
