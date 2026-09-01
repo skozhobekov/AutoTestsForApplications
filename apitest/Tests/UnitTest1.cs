@@ -15,7 +15,7 @@ public class Tests
         {
             BaseAddress = new Uri("https://reqres.in/api/")
         };
-        client.DefaultRequestHeaders.Add("x-api-key", "free_user_3HpM6WaSj9uZDo5SClQhdnaliKP");
+        client.DefaultRequestHeaders.Add("x-api-key", "free_user_3HMdkNLTV9xQwVXyEyCt3544HcE");
     }
 
     [Test]
@@ -25,6 +25,7 @@ public class Tests
         using HttpResponseMessage response = await client.GetAsync("users/2");
         //проверка статускода
         response.EnsureSuccessStatusCode();
+        
     }
 
     [Test]
@@ -33,8 +34,8 @@ public class Tests
         using HttpResponseMessage response = await client.GetAsync("users/2");
         string jsonGet = await response.Content.ReadAsStringAsync();
         UserResponceDTO userResponce = JsonSerializer.Deserialize<UserResponceDTO>(jsonGet);
-        UserDataDTO user = userResponce.Data;
-        Assert.That(user.Id, Is.EqualTo(2));
+        UsersDataDTO users = userResponce.Data;
+        Assert.That(users.Id, Is.EqualTo(2));
         
     }
 
@@ -51,12 +52,12 @@ public class Tests
         response.EnsureSuccessStatusCode();
 
         string jsonGet = await response.Content.ReadAsStringAsync();
-        CreateUserResponseDto createUserResponseDto = JsonSerializer.Deserialize<CreateUserResponseDto>(jsonGet);
+        CreateUserResponseDto1 createUserResponseDto1 = JsonSerializer.Deserialize<CreateUserResponseDto1>(jsonGet);
         
-        Assert.That(createUserResponseDto.Name, Is.EqualTo("Sanzhar"));
-        Assert.That(createUserResponseDto.Job, Is.EqualTo("Slotegrator"));
-        Assert.That(createUserResponseDto.Id, Is.Not.Null.And.Not.Empty);
-        Assert.That(createUserResponseDto.CreatedAt, Is.Not.EqualTo(default(DateTime)));
+        Assert.That(createUserResponseDto1.Name, Is.EqualTo("Sanzhar"));
+        Assert.That(createUserResponseDto1.Job, Is.EqualTo("Slotegrator"));
+        Assert.That(createUserResponseDto1.Id, Is.Not.Null.And.Not.Empty);
+        Assert.That(createUserResponseDto1.CreatedAt, Is.Not.EqualTo(default(DateTime)));
     }
 
 
@@ -69,16 +70,16 @@ public class Tests
         response.EnsureSuccessStatusCode();
     }
     
-    
-    [OneTimeTearDown]
-    public void TearDown()
-    {
-        client.Dispose();
-    }
     [Test]
     public async Task Test5()
     {
         using HttpResponseMessage response = await client.DeleteAsync("users/2");
         response.EnsureSuccessStatusCode();
+    }
+    
+    [OneTimeTearDown]
+    public void TearDown()
+    {
+        client.Dispose();
     }
 }

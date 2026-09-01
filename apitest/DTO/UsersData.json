@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Alice Johnson",
+        "id": "1",
+        "age": 25,
+        "city": "Stockholm",
+        "role": "admin",
+        "tags": ["premium"],
+        "address": {
+            "street": "Drottninggatan 10",
+            "coordinates": {
+                "latitude": 59.3293,
+                "longitude": 18.0686
+            }
+        }
+    },
+    {
+        "name": "Bob Smith",
+        "id": "2",
+        "age": 35,
+        "city": "Gothenburg",
+        "role": "user",
+        "tags": ["standard"],
+        "address": {
+            "street": "Avenyn 15",
+            "coordinates": {
+                "latitude": 57.7089,
+                "longitude": 11.9746
+            }
+        }
+    }
+]

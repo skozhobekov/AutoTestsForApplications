@@ -4,5 +4,5 @@ namespace apitest.DTO;
 public class UserResponceDTO
 {
    [JsonPropertyName("data")]
-    public UserDataDTO Data { get; set; }
+    public UsersDataDTO Data { get; set; }
 }

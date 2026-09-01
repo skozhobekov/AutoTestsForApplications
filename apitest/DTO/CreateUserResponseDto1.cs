@@ -2,7 +2,7 @@ using System.Text.Json.Serialization;
 
 namespace apitest.DTO;
 
-public class CreateUserResponseDto
+public class CreateUserResponseDto1
 {
     [JsonPropertyName("name")]
     public string Name { get; set; }

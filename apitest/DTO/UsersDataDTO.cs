@@ -1,7 +1,7 @@
 ﻿using System.Text.Json.Serialization;
 namespace apitest.DTO;
 
-public class UserDataDTO
+public class UsersDataDTO
 {
     [JsonPropertyName("id")]
     public int Id { get; set; }
