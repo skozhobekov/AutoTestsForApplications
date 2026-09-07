@@ -4,9 +4,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Refit;
 using apitest.Interfaces;
 using apitest.BookStoreDto;
+using apitest.DTO;
 using FluentAssertions;
 
 namespace apitest;
+
 
 public class BookStoreTests
 {
@@ -33,7 +35,7 @@ public class BookStoreTests
     [Test]
     public async Task CreateUser()
     {
-        var user = new UserDTO { UserName = "Sanjar123", Password = "StrongPass123!" };
+        var user = new UserDTO { UserName = "Sanjar1234", Password = "StrongPass123!" };
         var response = await API.CreateUserAsync(user);
         
     }
@@ -46,5 +48,25 @@ public class BookStoreTests
         response.Token.Should().NotBeNullOrEmpty();
         response.Status.Should().Be("Success");
         response.Result.Should().Contain("authorized");
+    }
+
+    
+    
+    [Test]
+    public async Task GetUserId()
+    {
+        var user = new UserDTO { UserName = "Sanjar1223457", Password = "StrongPass123!" };
+        var response = await API.CreateUserAsync(user);
+        var id = response.UserID;
+        Console.WriteLine(id);
+        id.Should().NotBeNullOrEmpty();
+    }
+
+    [Test]
+    public async Task AddBookAsync()
+    {
+        var user = new UserDTO { UserName = "Sanjar1234223111", Password = "StrongPass123!" };
+        var response = await API.ReturnUserIdAsync(user);
+        Console.WriteLine(response);
     }
 }
