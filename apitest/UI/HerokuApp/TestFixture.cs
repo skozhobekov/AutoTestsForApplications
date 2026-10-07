@@ -12,7 +12,7 @@ public class TestFixture
 
         var dbPath = Path.Combine(AppContext.BaseDirectory, "marketplace.db");
         var conn = $"Data Source={dbPath}";
-        services.AddDataAccess(conn);
+        //services.AddDataAccess(conn);
         Provider = services.BuildServiceProvider();
     }
 }
