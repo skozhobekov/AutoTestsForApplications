@@ -16,6 +16,7 @@ public class PlaywrightFixture : IAsyncDisposable
             SlowMo = 2000,
             Args = new[] { "--start-maximized" }
         });
+<<<<<<< HEAD
     }
 
     public async ValueTask DisposeAsync()
@@ -27,4 +28,25 @@ public class PlaywrightFixture : IAsyncDisposable
         Playwright?.Dispose();
     }
 
+=======
+
+        }
+        // public async Task InitializeAsync(Enums.BrowserType type = Enums.BrowserType.Chromium)
+        // {
+        //     var result = await BrowserFactory.CreateAsync(type);
+        //     Browser = result.Browser;
+        //     Playwright = result.Playwright;
+        // }
+
+
+        public async ValueTask DisposeAsync()
+        {
+            if (Browser != null)
+            {
+                await Browser.CloseAsync();
+            }
+
+            Playwright?.Dispose();
+        }
+>>>>>>> homework-13-pr
 }

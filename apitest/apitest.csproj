@@ -9,6 +9,15 @@
     </PropertyGroup>
 
     <ItemGroup>
+<<<<<<< HEAD
+=======
+
+        <PackageReference Include="coverlet.collector" Version="6.0.4" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.0" />
+        <PackageReference Include="NUnit" Version="4.3.2" />
+        <PackageReference Include="NUnit.Analyzers" Version="4.7.0" />
+        <PackageReference Include="NUnit3TestAdapter" Version="5.0.0" />
+>>>>>>> homework-13-pr
         <PackageReference Include="coverlet.collector" Version="6.0.4" />
         <PackageReference Include="Dapper" Version="2.1.79" />
         <PackageReference Include="FluentAssertions" Version="8.10.0" />
@@ -19,6 +28,10 @@
         <PackageReference Include="NUnit" Version="4.3.2" />
         <PackageReference Include="NUnit.Analyzers" Version="4.7.0" />
         <PackageReference Include="NUnit3TestAdapter" Version="5.0.0" />
+<<<<<<< HEAD
+=======
+        <PackageReference Include="Polly" Version="8.8.0" />
+>>>>>>> homework-13-pr
         <PackageReference Include="Refit" Version="15.1.0" />
         <PackageReference Include="Refit.HttpClientFactory" Version="15.1.0" />
         <PackageReference Include="Refit.Reflection" Version="15.1.0" />
@@ -29,12 +42,17 @@
     </ItemGroup>
 
     <ItemGroup>
+<<<<<<< HEAD
       <None Update="DTO\UsersData.json">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
     </ItemGroup>
 
     <ItemGroup>
+=======
+      <Folder Include="Constants\" />
+      <Folder Include="Enums\" />
+>>>>>>> homework-13-pr
       <Folder Include="UI\UI_HomeWork\" />
     </ItemGroup>
 
