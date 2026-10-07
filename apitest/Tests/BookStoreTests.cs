@@ -10,6 +10,7 @@ using FluentAssertions;
 namespace apitest;
 
 
+[TestFixture]
 public class BookStoreTests
 {
     private IBookStore API;
@@ -29,9 +30,7 @@ public class BookStoreTests
         var provider = services.BuildServiceProvider();
         API = provider.GetRequiredService<IBookStore>();
     }
-
-    //cb664c9d-e559-46bb-8fec-5a27ded41e9e
-// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6IlNhbmphcjEyMyIsInBhc3N3b3JkIjoiU3Ryb25nUGFzczEyMyEiLCJpYXQiOjE3ODgyMDExOTd9.As8WDCzL0izA1R73RsFmkOvam3qC79p_14KMfUf6fwk
+    
     [Test]
     public async Task CreateUser()
     {
@@ -69,4 +68,7 @@ public class BookStoreTests
         var response = await API.ReturnUserIdAsync(user);
         Console.WriteLine(response);
     }
+    
+
+    
 }
